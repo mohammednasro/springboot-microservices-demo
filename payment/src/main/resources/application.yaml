@@ -7,6 +7,10 @@ springdoc:
     enabled: true
     docExpansion: false  
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888
   application:
     name: PAYMENT-SERVICE
   profiles:

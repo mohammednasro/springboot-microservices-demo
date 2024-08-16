@@ -1,6 +1,10 @@
 server:
   port: 8761
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888
   application:
     name: EUREKA-SERVER
 eureka:

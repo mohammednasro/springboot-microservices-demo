@@ -1,6 +1,10 @@
 server:
   port: 7777
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888
   application:
     name: API-GATEWAY
   cloud:
