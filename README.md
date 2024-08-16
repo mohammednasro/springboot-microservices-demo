@@ -18,44 +18,7 @@ This Spring Boot application provides an API for for Accept deal details and per
 - Maven installed
 - MySQL database installed and running
 
-### Installation
 
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/mohammednasro/springboot-demo
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd springboot-demo/demo
-    ```
-3. Build the project:
-
-    ```bash
-    mvn clean package
-    ```
-
-4. Run the application:
-
-    ```bash
-    java -jar target/demo.jar
-    ```
-
-5. Access the Swagger UI documentation:
-
-    Open a web browser and go to `http://localhost:8080/swagger-ui.html`.
-
-
-## Usage
-
-### API Endpoints
-
-- `/v1/demo/add`: POST - Create a new demo
-- `/v1/demo/add/all`: POST - Create a list of demos
-- `/v1/clustered-data`: GET - to get all demos (pagaple)
-- `/v1/demo/{id}`: GET - to get a demo with id 
 
 ### Request and Response Formats
 
