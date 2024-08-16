@@ -1,0 +1,17 @@
+server:
+  port: 7777
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+          lower-case-service-id: true # todo
+  main:
+    web-application-type: reactive
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

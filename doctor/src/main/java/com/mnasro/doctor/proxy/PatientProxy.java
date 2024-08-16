@@ -14,7 +14,7 @@ import com.mnasro.doctor.model.dto.PatientDTO;
 
 import jakarta.validation.Valid;
 
-@FeignClient(name = "PATIENT-SERVICE")
+@FeignClient(name = "PATIENT-SERVICE" ,path = "patient")
 public interface PatientProxy {
 
 	@PostMapping("/v1/patient")

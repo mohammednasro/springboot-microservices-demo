@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mnasro.patient.dto.PageDTO;
 import com.mnasro.patient.dto.PaymentDTO;
 
-@FeignClient(name = "PAYMENT-SERVICE" )
+@FeignClient(name = "PAYMENT-SERVICE",path = "payment" )
 public interface PaymentProxy {
     @GetMapping("/v1/payment")
   	public PageDTO<PaymentDTO> getPatientPayments(@RequestParam(defaultValue = "0") int page,

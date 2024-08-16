@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.mnasro.doctor.model.dto.AddPaymentDTO;
 import com.mnasro.doctor.model.dto.PaymentDTO;
 
-@FeignClient(name = "PAYMENT-SERVICE")
+@FeignClient(name = "PAYMENT-SERVICE",path = "payment")
 public interface PaymentProxy {
 
 	@GetMapping("/v1/payment/transaction/{tranId}")
