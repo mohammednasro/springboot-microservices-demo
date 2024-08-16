@@ -16,6 +16,18 @@ public class RoutesConfig {
                         .uri("lb://PATIENT-SERVICE/**"))
                 .route(p-> p.path("/payment/**")
                         .uri("lb://PAYMENT-SERVICE/**"))
+                .route(p -> p.path("/swagger-ui/**")
+                        .uri("lb://DOCTOR-SERVICE"))
+                .route(p -> p.path("/v3/api-docs/**")
+                        .uri("lb://DOCTOR-SERVICE"))
+                .route(p -> p.path("/swagger-ui/**")
+                        .uri("lb://PATIENT-SERVICE"))
+                .route(p -> p.path("/v3/api-docs/**")
+                        .uri("lb://PATIENT-SERVICE"))
+                .route(p -> p.path("/swagger-ui/**")
+                        .uri("lb://PAYMENT-SERVICE"))
+                .route(p -> p.path("/v3/api-docs/**")
+                        .uri("lb://PAYMENT-SERVICE"))
                 .build();
     }
 }
