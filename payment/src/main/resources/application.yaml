@@ -1,0 +1,27 @@
+server:
+  port: 3000
+springdoc:
+  swagger-ui:
+    enabled: true
+    docExpansion: false  
+spring:
+  application:
+    name: PAYMENT-SERVICE
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost/payment?nullCatalogMeansCurrent=true&useConfigs=maxPerformance&characterEncoding=utf8&useUnicode=true&useJDBCCompliantTimezoneShift=false&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    username: root
+    password: Root@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+

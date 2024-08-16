@@ -1,0 +1,18 @@
+server:
+  port: 8000
+springdoc:
+  swagger-ui:
+    enabled: true
+    docExpansion: false  
+spring:
+  application:
+    name: DOCTOR-SERVICE
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+
+
+
+
