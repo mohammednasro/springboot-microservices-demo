@@ -30,6 +30,7 @@ import com.mnasro.patient.util.ValidationUtils;
 import com.mnasro.patient.validator.AddPatientDTOValidator;
 import com.mnasro.patient.validator.UpdatePatientDTOValidator;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
@@ -48,6 +49,7 @@ public class PatientController {
 	@Autowired
 	private UpdatePatientDTOValidator updatePatientDTOValidator;
 
+	@CircuitBreaker(name = "add")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
@@ -62,6 +64,7 @@ public class PatientController {
 		return patientFacade.add(patientDTO);
 	}
 	
+	@CircuitBreaker(name = "update")
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -76,18 +79,21 @@ public class PatientController {
 		return patientFacade.update(updatePatientDTO);
 	}
 	
+	@CircuitBreaker(name = "getById")
     @GetMapping("/{id}")
 	public PatientDTO getById(@PathVariable long id) {
 
 		return patientFacade.findById(id);
 	}
     
+	@CircuitBreaker(name = "delete")
     @DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable long id) {
 		patientFacade.delete(id);
 	}
     
+	@CircuitBreaker(name = "getAll")
     @GetMapping
   	public PageDTO<PatientDTO> getAll(@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -100,6 +106,7 @@ public class PatientController {
   		return patientFacade.findAll(pageable);
   	}
     
+	@CircuitBreaker(name = "getPatientPayments")
     @GetMapping("/payments")
   	public PageDTO<PaymentDTO> getPatientPayments(@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,

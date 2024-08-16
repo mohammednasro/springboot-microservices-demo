@@ -66,10 +66,6 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-commons</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -146,6 +142,22 @@
 			<version>${spring-boot-admin.version}</version>
 		</dependency>
 		<!-- ./  spring boot admin client -->
+		
+		<!-- Circuit Breaker -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-spring-boot2</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+		<!-- ./Circuit Breaker -->
 	</dependencies>
 
 	<build>

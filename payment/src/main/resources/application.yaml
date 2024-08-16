@@ -30,4 +30,35 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+      
+      
+management:
+  health:
+     show-details: always
+  endpoint:
+    health:
+      show-details: always
+  ### Spring boot admin
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  ### Spring boot admin
+  
+  ### resilience4j circuitbreaker
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      getPatientInstance:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 3s
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+   ### resilience4j circuitbreaker
 

@@ -13,6 +13,7 @@ import com.mnasro.doctor.model.dto.AddPaymentDTO;
 import com.mnasro.doctor.model.dto.PaymentDTO;
 import com.mnasro.doctor.service.PaymentService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
@@ -24,11 +25,13 @@ public class PatientPaymentController {
 	@Qualifier("paymentService")
 	private PaymentService paymentService;
 
+	@CircuitBreaker(name = "getPaymentByTranId")
 	@GetMapping("/transaction/{tranId}")
 	public PaymentDTO getPaymentByTranId(@PathVariable String tranId) {
 		return paymentService.getByTranId(tranId);
 	}
 
+	@CircuitBreaker(name = "addPayment")
 	@PostMapping
 	public PaymentDTO addPayment(@RequestBody AddPaymentDTO dto) {
 		return paymentService.add(dto);

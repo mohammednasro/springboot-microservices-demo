@@ -25,6 +25,7 @@ import com.mnasro.payment.facade.PaymentFacade;
 import com.mnasro.payment.util.ValidationUtils;
 import com.mnasro.payment.validator.AddPaymentDTOValidator;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
@@ -40,17 +41,18 @@ public class PaymentController {
 	@Autowired
 	private AddPaymentDTOValidator addPaymentDTOValidator;
 
-	
+	@CircuitBreaker(name = "getById")
     @GetMapping("/{id}")
 	public PaymentDTO getById(@PathVariable long id) {
 		return paymentFacade.get(id);
 	}
-    
+	@CircuitBreaker(name = "getPaymentByTranId")
     @GetMapping("/transaction/{tranId}")
     public PaymentDTO getPaymentByTranId(@PathVariable String tranId){
         return paymentFacade.getByTranId(tranId);
     }
     
+	@CircuitBreaker(name = "add")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
@@ -65,6 +67,7 @@ public class PaymentController {
 		return paymentFacade.add(addPaymentDTO);
 	}
 	
+	@CircuitBreaker(name = "getPatientPayments")
     @GetMapping
   	public PageDTO<PaymentDTO> getPatientPayments(@RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
